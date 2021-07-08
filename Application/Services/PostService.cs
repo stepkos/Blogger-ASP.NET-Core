@@ -33,5 +33,15 @@ namespace Application.Services
             var post = _postRepository.GetById(id);
             return _mapper.Map<PostDto>(post);
         }
+
+        public PostDto AddNewPost(CreatePostDto newPost)
+        {
+            if (string.IsNullOrEmpty(newPost.Title))
+                throw new Exception("Post can not have an empty title");
+
+            var post = _mapper.Map<Post>(newPost);
+            _postRepository.Add(post);
+            return _mapper.Map<PostDto>(post);
+        }
     }
 }
