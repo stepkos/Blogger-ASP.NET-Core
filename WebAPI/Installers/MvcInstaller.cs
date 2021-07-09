@@ -1,6 +1,6 @@
 ﻿using Application;
 using Application.Interfaces;
-using Application.Mapping;
+using Application.Mappings;
 using Application.Services;
 using Domain.Interfaces;
 using Infrastructure;
