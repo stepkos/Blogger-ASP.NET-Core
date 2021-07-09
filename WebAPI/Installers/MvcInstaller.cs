@@ -1,7 +1,9 @@
-﻿using Application.Interfaces;
+﻿using Application;
+using Application.Interfaces;
 using Application.Mapping;
 using Application.Services;
 using Domain.Interfaces;
+using Infrastructure;
 using Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +18,9 @@ namespace WebAPI.Installers
     {
         public void InstallServices(IServiceCollection services, IConfiguration Configuration)
         {
-            services.AddScoped<IPostRepository, PostRepository>();
-            services.AddScoped<IPostService, PostService>();
 
-            services.AddSingleton(AutoMapperConfig.Initialize());
+            services.AddApplication();
+            services.AddInfrastructure();
 
             services.AddControllers();
         }
